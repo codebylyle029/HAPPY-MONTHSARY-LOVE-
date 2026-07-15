@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Our Playlist</title><link rel='stylesheet' href='style.css'></head><body><div class='card'><h1>OUR PLAYLIST 💜</h1><div class='music-player'><img id='cover' src='images/cover1.jpg' class='cover'><h2 id='songTitle'>Song Title 1</h2><p id='artistName'>Artist 1</p><audio id='player'></audio><input type='range' id='progress' value='0'><div class='controls'><button class='music-btn' onclick='previousSong()'>⏮</button><button class='music-btn play' id='playBtn' onclick='playPause()'>▶</button><button class='music-btn' onclick='nextSong()'>⏭</button></div></div></div><script>
+const songs=['/PROJECT 3.0/MUSIC/Make It With You - Ben&Ben (Lyrics) [B4HD6aC4Wos].mp3',
+'/PROJECT 3.0/MUSIC/You and Me - Lifehouse (Lyrics) 🎵 [gXiEVCDvRKg].mp3 ',
+'/PROJECT 3.0/MUSIC/Arctic Monkeys - I Wanna Be Yours [fukGbiPuBjU].mp3',
+'/PROJECT 3.0/MUSIC/Rico Blanco - You’ll Be Safe Here (Official Lyric Video) [xyg1YlwWMNw].mp3',
+'/PROJECT 3.0/MUSIC/Silent Sanctuary - 14 (Official Lyric Video) [3MFMBC2P8Oc].mp3',
+'/PROJECT 3.0/MUSIC/The 1975 - fallingforyou [W3JJxS0gNkE].mp3',
+'/PROJECT 3.0/MUSIC/NA [ty7g7CVD7NI].mp3',
+'/PROJECT 3.0/MUSIC/Pink Matter [uaLV003llhY].mp3',
+'/PROJECT 3.0/MUSIC/Austin Mahone - All I Ever Need (Official Audio) - PRE ORDER THE SECRET NOW on iTUNES__ [KAGnm9HoJsQ].mp3',
+'/PROJECT 3.0/MUSIC/IV OF SPADES - Captivated (Official Audio) [KrnmBZiM-Fs].mp3'];
+
+const titles=['Make it with you',
+'You and Me',
+'I Wanna be yours',
+'You ll be safe here',
+'14',
+'Falling For You',
+'Joji',
+'Pink Matter',
+'All I Ever Need',
+'Captivated'];
+
+const artists=['Ben&Ben',
+'Lifehouse',
+'Arctic Monkey',
+'Rico Blanco',
+'Silent Sanctuary',
+'The 1975',
+'Silent Sanctuary',
+'Frank Ocean',
+'Austin Mahone',
+'Ben&Ben'];
+
+const covers=['/PROJECT 3.0/PICTURES/45193999270.png', 
+'/PROJECT 3.0/PICTURES/45193999270.png' ,
+'/PROJECT 3.0/PICTURES/45193999270.png',
+'/PROJECT 3.0/PICTURES/45193999270.png',
+'/PROJECT 3.0/PICTURES/45193999270.png',
+'/PROJECT 3.0/PICTURES/45193999270.png',
+'/PROJECT 3.0/PICTURES/45193999270.png',
+'/PROJECT 3.0/PICTURES/45193999270.png',
+'/PROJECT 3.0/PICTURES/45193999270.png',
+'/PROJECT 3.0/PICTURES/45193999270.png',];
+
+let currentSong=0;const player=document.getElementById('player'),progress=document.getElementById('progress'),playBtn=document.getElementById('playBtn');function loadSong(){player.src=songs[currentSong];songTitle.textContent=titles[currentSong];artistName.textContent=artists[currentSong];cover.src=covers[currentSong];}loadSong();function playPause(){if(player.paused){player.play();playBtn.textContent='||';}else{player.pause();playBtn.textContent='▶';}}function nextSong(){currentSong=(currentSong+1)%songs.length;loadSong();player.play();playBtn.textContent='||';}function previousSong(){currentSong=(currentSong-1+songs.length)%songs.length;loadSong();player.play();playBtn.textContent='||';}player.ontimeupdate=()=>{progress.max=player.duration||0;progress.value=player.currentTime;};progress.oninput=()=>player.currentTime=progress.value;player.onended=nextSong;</script></body></html>
